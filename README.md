@@ -6,6 +6,11 @@
 
 [파이썬 수업자료](https://lab.ssafy.com/s12/python)
 
+- d2coding 설치
+
+    1. github에서 배포하는 1.3.2버전
+    2. d2codingall 모든 사용자용으로 설치
+    3. setting -> font family에서 d2coding
 ---
 
 ### 0716 - 기초 문법
@@ -428,17 +433,213 @@
 - 데코레이터 : 다른 함수의 코드를 유지한 채로 수정하거나 확장하기 위해 사용되는 __함수__
 
     
+### 0725 OOP(2) - Object Oriented Program
+
+1. 상속
+
+    - 기존 클래스의 속성과 메서드를 물려받아 새로운 하위 클래스를 생성하는 것
+
+    - 상속이 필요한 이유
+    
+        1. 코드 재사용 : 상속을 통해 기존 클래스의 속성과 메서드를 재사용할 수 있음, 중복된 코드를 줄일 수 있음
+
+        2. 계층 구조 : 상속을 통해 클래스들 간의 계층 구조를 형성할 수 있음, 부모 클래스와 자식 클래스 간의 관계를 표현하고, 더 구체적인 클래스를 만들 수 있음
+
+        3. 유지 보수 용이성 : 기존 클래스의 수정이 필요한 경우 부모 클래스만 수정하면 되므로 유지 보수가 용이해짐 -> 코드의 일관성을 유지하고 수정이 필요한 범위를 최소화할 수 있음
+
+    ```python
+    class Person:
+        def __init__(self, name, age):
+            self.name = name
+            self.age - age
+
+        def talk(self):             # 메서드 재사용
+            print(f'반갑습니다. {self.name}입니다.')
+
+    class Professor(Person):
+        def __init__(self, name, age, department):
+            self.name = name
+            self.age = age
+            self.department = department
+
+    class Student(Person):
+        def __init__(self, name, age, gpa):
+            self.name = name
+            self.age = age
+            self.gpa = gpa
+
+    p1 = Professor('박교수', 49, '컴퓨터공학과')
+    s1 = Student('김학생', 20, 35)
+
+    p1.talk() # 반갑습니다. 박교수입니다.
+    s1.talk() # 반갑습니다. 김학생입니다.
+    ```
+
+2. 다중 상속
+
+    - 둘 이상의 상위 클래스로부터 여러 행동이나 특징을 상속받을 수 있는 것
+    
+    - 상속받은 모든 클래스의 요소를 활용 가능함
+
+    - 중복된 속성이나 메서드가 있는 경우 상속 순서에 의해 결정됨
+
+    ```python
+    class Person:
+        def __init__(self, name):
+            self.name = name
+
+        def greeting(self):
+            return f'안녕, {self.name}'
+
+    class Mom(Person):
+        gene = 'XX'
+
+        def swin(self):
+            return '엄마가 수영'
+
+    class Dad(Person):
+        gene = 'Xy'
+
+        def walk(self):
+            return '아빠가 걷기'
+
+    class FirstChild(Dad, Mpm):
+        def swim(self):
+            return '첫째가 수영'
+
+        def cry(self):
+            return '첫째가 응애'
+
+    baby1 = FirstChild('아가')
+
+    print(baby1.cry())  # 첫째가 응애
+    print(baby1.swim()) # 첫째가 수영
+    print(baby1.walk()) # 아빠가 걷기
+    print(baby1.gene)   # XY
+    ```
+
+    - 다이아몬드 문제
+
+        - MRO(Method Resolution Order) 알고리즘을 사용하여 클래스 목록 생성
+
+        - 부모 클래스로부터 상속된 속성들의 검색을 깊이 우선으로, 왼쪽에서 오른쪽으로 계층 구조에서 겹치는 같은 클래스를 두 번 검색하지 않음
+
+        - 속성을 D -> B -> C 순서로 탐색
+        `class D(B, C):`
 
 
+    - super() : 부모 클래스 객체를 반환하는 내장 함수
+
+        - 다중 상속 시 MRO를 기반으로 현재 클래스가 상속하는 모든 부모 클래스 중 다음에 호출될 메서드를 결정하여 자동으로 호출
+
+        ```python
+        class ParentA:
+            def __init__(self, arg):
+                self.value_a = 'ParentA'
+
+            def show_value(self):
+                print(f'Value from ParentA: {self.value_a}')
+
+        class ParentB:
+            def __init__(self):
+                self.value_b = 'ParentB'
+
+            def show_value(self):
+                print(f'Value from ParentB: {self.value_b}')
+                
+        class Child(ParentA, ParentB):
+            def __init__(self):
+                super().__init__(arg)  #ParantA 클래스의 __init__ 메서드 호출
+                self.value_c = 'Child'
+
+            def show_value(self):
+                super().show_value()    # ParentA 클래스의 show_value 메서드 호출
+                print(f'Value from Child: {self.value_c}')
+        ```
+
+    - mro() 메서드 : 해당 인스턴스의 클래스가 어떤 부모 클래스를 가지는지 확인하는 메서드
+
+        - 이름 공간을 인스턴스 -> 클래스 순으로 탐색에서 => 인스턴스 -> 자식 클래스 -> 부모 클래스 순으로 확장
+
+    ```python
+    class A:                    # 다이아몬드 구조
+    def __init__(self):
+        print('A Constructor')
 
 
+    class B(A):
+        def __init__(self):
+            super().__init__()
+            print('B Constructor')
 
 
+    class C(A):
+        def __init__(self):
+            super().__init__()
+            print('C Constructor')
 
 
+    class D(B, C):
+        def __init__(self):
+            super().__init__()
+            print('D Constructor')
+
+    
+    print(D.mro()) # [<class '__main__.D'>, <class '__main__.B'>, <class '__main__.C'>, <class '__main__.A'>, <class 'object'>]
+    ```
+
+    MRO가 필요한 이유
+
+        - 부모 클래스들이 여러번 엑세스 되지 않도록 함
+
+        - 부모들의 우선순위에 영향을 주지 않으면서 서브 클래스를 만드는 구조 형성
+
+        - 클래스의 신뢰성, 확장성 보장
+
+        - 클래스 간의 메서드 호출 순서가 예측 가능하게 유지되며, 코드의 재사용과 유지보수성이 향상
+
+3. 에러와 예외
+
+    - 문법 에러
+
+        1. Invalid syntax (문법 오류)
+
+        2. assign to literal (잘못된 할당)
+
+        3. EOL (End of Line)
+
+        4. EOF (End of File)
+
+    - 예외 (Exception) : 프로그램 실행 중에 감지되는 에러
+
+        - 내장 예외 : 예외 상황을 나타내는 예외 클래스들
+
+        1. ZeroDivisionError
+
+        2. NameError
+
+        3. TypeError : 타입 불일치, 인자 누락, 인자 초과, 인자 타입 불일치
+
+        4. ValueError
+
+        5. IndexError
+
+        6. KeyError
+
+        7. ModuleNotFoundError
+
+        8. ImportError
+
+        9. KeyboardInterrupt
+
+        10. IndentationError
 
 
+4. 예외 처리
 
+    - try ~ except ~ else ~ finally
+
+    `주의 : 내장 예외는 클래스이므로 상속 관계가 있음 -> 예외 처리시 주의 필요`
 
 
 
