@@ -1,24 +1,24 @@
-k, n, m = map(int, input().split())
-bus_stop = list(map(int, input().split()))
+T = int(input())
+for tc in range(1, T + 1): 
+    k, n, m = map(int, input().split())
+    bus_stop = list(map(int, input().split()))
 
-starting = -1
-move = 0
+    starting = 0
+    move = 0
 
-while starting < n:
-    if starting + k >= n:
-        move += 1
-        break
+    while starting + k < n:
+        
+        for i in range(k, 0, -1):
+            
+            if (starting + i) in bus_stop:
 
-    for i in range(k, 0, -1):
-
-        if (starting + i) in bus_stop:
-            starting += i
-            move += 1
+                starting += i
+                move += 1    
+                break
+                
         else:
             move = 0
             break
-    
-    if move == 0:
-        break
-    
-print(move)
+                
+
+    print(f'#{tc} {move}')
