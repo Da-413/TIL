@@ -11,11 +11,12 @@ for tc in range(1, T + 1):
             dx = [0, 1, 0, -1]
             dy = [1, 0, -1, 0]
             total = matrix[i][j]
+            center = matrix[i][j]
 
             for k in range(4):
-                for l in range(total):
-                    nx = i + dx[k] * (l + 1)
-                    ny = j + dy[k] * (l + 1)
+                for l in range(1, center + 1):
+                    nx = i + dx[k] * l
+                    ny = j + dy[k] * l
 
                     if 0 <= nx < n and 0 <= ny < m:
                         total += matrix[nx][ny]
