@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>개발자 포트폴리오</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+	integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.typekit.net/xyz123.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css" rel="stylesheet">
+  <style>
+	.hero {
+	  background: #333;
+	  color: #fff;
+	  padding: 4rem 0;
+	  text-align: center;
+	}
+	.hero h1 {
+	  font-size: 3rem;
+	}
+	.footer {
+	  background-color: #333;
+	  color: #fff;
+	  padding: 1rem 0;
+	  text-align: center;
+	}
+	.card-body img {
+	  height: 200px;
+	  object-fit: cover;
+	}
+	body {
+	  font-family: 'Proxima Nova', sans-serif;
+	}
+	.container0 {
+	  font-family: 'Lora', serif;
+	}
+	/* Custom styles for sticky navbar */
+	.navbar {
+	  background-color: #333;
+	}
+	.navbar-brand, .navbar-nav .nav-link {
+	  color: #fff;
+	}
+	.navbar-nav .nav-link:hover {
+	  color: #ddd;
+	}
+  </style>
+</head>
+
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+	<div class="container">
+	  <a class="navbar-brand" href="#">이연규 포트폴리오</a>
+	  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+		aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	  </button>
+	  <div class="collapse navbar-collapse" id="navbarNav">
+		<ul class="navbar-nav ms-auto">
+		  <li class="nav-item">
+			<a class="nav-link" href="#about">소개</a>
+		  </li>
+			<li class="nav-item">
+				<a class="nav-link" href="#skills">기술</a>
+			</li>
+		  <li class="nav-item">
+			<a class="nav-link" href="#projects">프로젝트</a>
+		  </li>
+		  <li class="nav-item">
+			<a class="nav-link" href="#contact">연락처</a>
+		  </li>
+		</ul>
+	  </div>
+	</div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+	<div class="container0">
+	  <h1>이연규</h1>
+	  <p>데이터 사이언티스트 | 데이터 엔지니어</p>
+	</div>
+  </header>
+
+  <!-- About Section -->
+  <section id="about" class="py-5">
+	<div class="container">
+	  <h2 class="text-center mb-4">소개</h2>
+	  <p class="text-center">안녕하세요! 저는 데이터 사이언티스트 이연규입니다. 다양한 데이터 분석 기술을 활용하여 새로운 인사이트를 도출하고 있습니다.</p>
+	  <p class="text-center">제 포트폴리오를 통해 제 프로젝트를 살펴보시기 바랍니다.</p>
+	</div>
+  </section>
+
+<!-- Skills Section -->
+<section id="skills" class="py-5 bg-light">
+	<div class="container">
+	  <h2 class="text-center mb-4">기술</h2>
+	  <div class="row">
+		<div class="col-12 col-md-6 col-lg-4 gx-5 gy-3">
+			<div class="card-body">
+			  <h4 class="card-title fw-bold">ML / AI 프레임워크</h4>
+				<p></p>
+				<img src="img/python.png" alt="python" style="width: 10%; height: auto">
+			  <p class="card-text">Python3</p>
+				<img src="img/pytorch.PNG" alt="pytorch" style="width: 30%; height: auto">
+				<p class="card-text">Pytorch</p>
+				<img src="img/tensorflow.PNG" alt="tensorflow" style="width: 30%; height: auto">
+				<p class="card-text">Tensorflow</p>
+			  <a href="#" class="btn btn-primary">상세 보기</a>
+			</div>
+		</div>
+		<div class="col-12 col-md-6 col-lg-4 gx-5 gy-3">
+			<div class="card-body">
+			  <h4 class="card-title fw-bold">데이터 시각화</h4>
+				<p></p>
+				<img src="img/tableau.PNG" alt="tableau" style="width: 30%; height: auto">
+			  <p class="card-text">Tableau</p>
+				<img src="img/python.png" alt="python" style="width: 10%; height: auto">
+				<p class="card-text">Python3</p>
+				<img src="img/powerbi.PNG" alt="power_bi" style="width: 30%; height: auto">
+				<p class="card-text">Power BI</p>
+			  <a href="#" class="btn btn-primary">상세 보기</a>
+		  </div>
+		</div>
+		<div class="col-12 col-md-6 col-lg-4 gx-5 gy-3">
+		  <div class="card-body">
+			  <h4 class="card-title fw-bold">데이터베이스</h4>
+				<p></p>
+				<img src="img/mysql.PNG" alt="mysql" style="width: 30%; height: auto">
+			  <p class="card-text">MySQL</p>
+				<img src="img/nosql.PNG" alt="nosql" style="width: 30%; height: auto">
+				<p class="card-text">NoSQL</p>
+				<img src="img/mongodb.PNG" alt="mongoDB" style="width: 30%; height: auto">
+				<p class="card-text">Mongo DB</p>
+			  <a href="#" class="btn btn-primary">상세 보기</a>
+		  </div>
+		</div>
+	</div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="py-5 bg-light">
+	<div class="container">
+	  <h2 class="text-center mb-4">프로젝트</h2>
+	  <div class="row">
+		<div class="col-12 col-md-6 col-lg-4 gx-5 gy-3">
+		  <div class="card">
+			<img src="img/company.jpg" alt="프로젝트 1">
+			<div class="card-body">
+			  <h4 class="card-title fw-bold">기업 분석 프로젝트</h4>
+			  <p class="card-text">이 프로젝트는 시계열 모델과 회귀분석을 응용하여 기업의 재무 형태를 분석한 프로젝트입니다.</p>
+			  <a href="#" class="btn btn-primary">상세 보기</a>
+			</div>
+		  </div>
+		</div>
+		<div class="col-12 col-md-6 col-lg-4 gx-5 gy-3">
+		  <div class="card">
+			<img src="img/semiconductor.jpg" alt="프로젝트 2">
+			<div class="card-body">
+			  <h4 class="card-title fw-bold">반도체 불량 분석 프로젝트</h4>
+			  <p class="card-text">이 프로젝트는 최신 머신러닝 기법을 제조업에 적용하여 불량률을 분석하고 개선해낸 프로젝트입니다.</p>
+			  <a href="#" class="btn btn-primary">상세 보기</a>
+			</div>
+		  </div>
+		</div>
+		<div class="col-12 col-md-6 col-lg-4 gx-5 gy-3">
+		  <div class="card">
+			<img src="img/datapipe.jpg" alt="프로젝트 3">
+			<div class="card-body">
+			  <h4 class="card-title fw-bold">데이터 분석 파이프라인 구축</h4>
+			  <p class="card-text">이 프로젝트는 데이터 시각화 및 분석을 위해 데이터를 수집 및 정제하여 제공한 프로젝트입니다.</p>
+			  <a href="#" class="btn btn-primary">상세 보기</a>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	</div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-5">
+	<div class="container">
+	  <h4 class="text-right mb-4">010-3937-2662</h4>
+	  <p class="text-right">이메일: <a href="mailto:gyoo97413@gmail.com">gyoo97413@gmail.com</a></p>
+	  <p class="text-right">깃허브: <a href="https://github.com/Da-413/" target="github">https://github.com/Da-413/</a></p>
+	</div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+	<div class="container">
+	  <p>&copy; 2024 이연규. All rights reserved.</p>
+	</div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+	crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
