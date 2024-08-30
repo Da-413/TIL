@@ -19,12 +19,12 @@ for tc in range(1, T + 1):
                     nx += dx[k]
                     ny += dy[k]
                 if nx == i and ny == j:
-                    
-            desert_list.append(desert)
-    
-    ans_list = []
-    for i in range(len(desert_list)):
-        if len(set(desert_list[i])) == len(desert_list[i]):
-            ans_list.append(desert_list[i])
 
-    print(ans_list)
+            # desert_list.append(desert)
+    
+    # ans_list = []
+    # for i in range(len(desert_list)):
+    #     if len(set(desert_list[i])) == len(desert_list[i]):
+    #         ans_list.append(desert_list[i])
+
+    # print(ans_list)
