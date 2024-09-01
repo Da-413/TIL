@@ -1,5 +1,5 @@
 import sys
-sys.stdin = open('input2.txt', 'r')
+sys.stdin = open('input.txt', 'r')
 
 passowrd_dict = {'0001101': '0', '0011001': '1', '0010011': '2', '0111101': '3', '0100011': '4',
                   '0110001': '5', '0101111': '6', '0111011': '7', '0110111': '8', '0001011': '9'}
@@ -47,21 +47,15 @@ for tc in range(1, T + 1):
     for bin_password in bin_password_list:
         if bin_password not in password_list:
             password_list.append(bin_password)
+    password_list.remove('0b0')
 
     new_password = []
     for password in password_list:
-        password = list(password)
-        password.pop(0)
-        password.pop(0)
-        while len(password) > 0 and password[-1] == '0':
-            password.pop()
-        while len(password) > 0 and password[0] == '0':
-            password.pop(0)
-        while len(password) % 56 != 0:
-            password.insert(0, '0')
-        password = ''.join(password)
+        password = password.lstrip('0b')
+        password = password.rstrip('0')
         new_password.append(password)
-    new_password.remove('')
+
+    
 
     ans = 0
     for password in new_password:

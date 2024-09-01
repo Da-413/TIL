@@ -19,7 +19,7 @@ for tc in range(1, T + 1):
                     nx += dx[k]
                     ny += dy[k]
                 if nx == i and ny == j:
-
+                    pass
             # desert_list.append(desert)
     
     # ans_list = []
