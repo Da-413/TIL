@@ -1,35 +1,33 @@
-import sys
-sys.stdin = open("hanaro.txt")
-
 import heapq
-from itertools import permutations
 
-def dijkstra(start):
+def prim(start):
+    global n
+
     heap = []
     heapq.heappush(heap, (0, start))
 
-    distance = [float("INF")] * n
-    distance[start] = 0
+    weight = 0
 
     while heap:
-        dist, now = heapq.heappop(heap)
+        w, node = heapq.heappop(heap)
 
-        if distance[now] < dist:
+        if MST[node]:
             continue
 
-        for next in graph[now]:
-            next_node = next[0]
-            cost = next[1]
+        MST[node] = 1
+        weight += w
 
-            new_cost = cost + dist
-
-            if new_cost >= distance[next_node]:
+        for t in range(n):
+            if graph[node][t] == 0:
+                continue
+            
+            if MST[t]:
                 continue
 
-            distance[next_node] = new_cost
-            heapq.heappush(heap, (new_cost, next_node))
+            heapq.heappush(heap, (graph[node][t], t))
 
-    return distance
+    return weight
+
 
 T = int(input())
 for tc in range(1, T + 1):
@@ -38,21 +36,17 @@ for tc in range(1, T + 1):
     y = list(map(int, input().split()))
     E = float(input())
 
-    graph = [[] for _ in range(n)]
+    graph = [[0] * n for _ in range(n)]
     for i in range(n):
         for j in range(n):
             if i != j:
                 graph[i].append((j, E * ((x[i] - x[j]) ** 2 + (y[i] - y[j]) ** 2)))
     
     
-    path = [0] * n
+    MST = [0] * n
+    
+    result = []
     for i in range(n):
-        path[i] = dijkstra(i)
-    print("path: ", path)
-    idxes = list(permutations(range(n), n))
-    print("idxes: ", idxes)
-    print("==================")
-    for idx in idxes:
-        for i in range(n):
-            print(path[idx[i]][i], end = " ")
-        print()
+        result.append(prim(i))
+    
+    print(f"#{tc} {round(max(result))}")
