@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block header %}
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가족 여행 추천</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            text-align: center;
+        }
+        .form-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .input-field {
+            margin-bottom: 10px;
+        }
+        label, input {
+            display: block;
+            margin: 5px 0;
+            width: 100%;
+        }
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+{% endblock header %}
+
+
+{% block content %}
+  <h1>가족 여행을 가기 가장 좋은 날 추천</h1>
+
+    <div class="form-container">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="input-field">
+                <label for="start_date">여행 시작 날짜 (YYYY-MM-DD):</label>
+                <input type="date" id="start_date" name="start_date" value="{{ start_date }}">
+            </div>
+            <div class="input-field">
+                <label for="end_date">여행 종료 날짜 (YYYY-MM-DD):</label>
+                <input type="date" id="end_date" name="end_date" value="{{ end_date }}">
+            </div>
+            <button type="submit" class="button">추천 날짜 찾기</button>
+        </form>
+    </div>
+
+    {% if best_day_message %}
+    <div class="result">
+        <p>{{ best_day_message }}</p>
+    </div>
+    {% endif %}
+{% endblock content %}
+
