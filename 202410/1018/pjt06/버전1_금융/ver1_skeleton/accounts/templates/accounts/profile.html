@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container-fluid mt-5"> <!-- container-fluid로 변경하여 전체 너비 사용 -->
+    <div class="row">
+      <div class="col-md-6"> <!-- offset 제거 -->
+        <div class="card text-start">
+          <div class="card-body">
+            <h1 class="card-title">{{person.username}}님의 프로필 페이지</h1>
+            <p class="card-text">
+              팔로잉 : <strong>{{ person.followings.all|length }}</strong> / 
+              팔로워 : <strong>{{ person.followers.all|length }}</strong>
+            </p>
+            <br>
+
+            {% if request.user != person %}
+              <div class="mb-3">
+                <form action="{% url "accounts:follow" person.pk %}" method="POST">
+                  {% csrf_token %}
+                  {% if request.user in person.followers.all %}
+                    <input type="submit" value="언팔로우" class="btn btn-danger">
+                  {% else %}
+                    <input type="submit" value="팔로우" class="btn btn-primary">
+                  {% endif %}
+                </form>
+              </div>
+            {% endif %}
+
+            <p><strong>회원번호:</strong> {{person.pk}}</p>
+            <p><strong>유저이름:</strong> {{person.username}}</p>
+            <p><strong>가입날짜:</strong> {{person.date_joined}}</p>
+          </div>
+        </div>
+
+        <div class="mt-5 text-start">
+          <h2>유저가 작성한 게시글</h2>
+          {% if person.board_set.all|length == 0 %}
+            <p>작성한 게시글이 없습니다.</p>
+          {% else %}
+            <ul class="list-group">
+              {% for boards in person.board_set.all %}
+                <li class="list-group-item">
+                  <strong>글번호:</strong> {{ boards.pk }} <br>
+                  <strong>글제목:</strong> 
+                  <a href="{% url "boards:detail" boards.pk %}">{{ boards.title }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+
+        <div class="mt-5 text-start">
+          <h2>유저가 작성한 댓글</h2>
+          {% if person.comment_set.all|length == 0 %}
+            <p>아직 작성한 댓글이 없습니다.</p>
+          {% else %}
+            <ul class="list-group">
+              {% for comment in person.comment_set.all %}
+                <li class="list-group-item">
+                  <strong>게시물 제목:</strong> 
+                  <a href="{% url "boards:detail" comment.board.pk %}">{{ comment.board.title }}</a> <br>
+                  <strong>댓글:</strong> {{ comment.content }}
+                </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+
+        <div class="mt-5 text-start">
+          <h2>팔로워</h2>
+          {% if person.followers.all|length == 0 %}
+            <p>팔로워 한 사람이 없습니다.</p>
+          {% else %}
+            <ul class="list-group">
+              {% for follower in person.followers.all %}
+                <li class="list-group-item">
+                  <a href="{% url "accounts:profile" follower %}">{{ follower }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
